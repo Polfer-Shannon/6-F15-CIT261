@@ -27,15 +27,15 @@
 				var currDate = new Date(calMonth[i][j]);
 				day = currDate.getDate();
 					if(day == now.getDate() && currDate.getMonth() == now.getMonth()) {
-						calendar += '<td class="today">' + day + '</td>';
+						calendar += '<td class="today" onclick=(dayClick(\'' + day  +'\',\'today\'))>' + day + '</td>';
 					} else if(currDate < now) {
 						calendar += '<td class="past"><s>' + day + '</s></td>';
 					} else if(j == 0) {
 						calendar += '<td>' + day + '</day>';
 					} else if(currDate.getMonth() > now.getMonth() && currDate.getYear() == now.getYear()
 						|| currDate.getMonth() < now.getMonth() && currDate.getYear() < now.getYear()) {
-						calendar += '<td class="moderate">' + day + '</td>';
-					} else { calendar += '<td class="light">' + day + '</td>'; }
+						calendar += '<td class="moderate" onclick=(dayClick(\'' + day  +'\',\'nextmonth\'))>' + day + '</td>';
+					} else { calendar += '<td class="light" onclick=(dayClick(\'' + day  +'\',\'thismonth\'))>' + day + '</td>'; }
 				}
 				calendar += '</tr>';
 			}
@@ -48,3 +48,9 @@
 			this.setTime(changedDate.getTime());
 			return this;
 	}
+
+//send day clicked and it's data to schedule picker	
+function dayClick(day, when) {
+	console.log(day + '('+ when +') has been clicked');
+	//TODO: call schedule page with this data here
+}
