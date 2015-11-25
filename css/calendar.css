@@ -26,7 +26,7 @@ td.day {
 
 .past {
 	background-color: #E7F3CD;
-	cursor: normal;
+	cursor: auto;
 }
 
 .today {
@@ -48,54 +48,44 @@ td:first-child.today {
 }
 .today:hover {
     background-color: #749a02;
-   -webkit-animation-name: hov;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-fill-mode: forwards;
+   -webkit-animation: hov 1s 1 forwards;
 }
 .light:hover{
     background-color: #cee2a3;
-   -webkit-animation-name: lig;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-fill-mode: forwards;
-    
+   -webkit-animation: lig 1s 1 forwards;   
 }
 .moderate:hover{
     background-color: #c7b9c1;
-   -webkit-animation-name: mod;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-fill-mode: forwards;
-    
+   -webkit-animation: mod 1s 1 forwards; 
 }
 td:first-child:hover{
     background-color: #b9acff;
-   -webkit-animation-name: fir;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-fill-mode: forwards;   
+   -webkit-animation: fir 1s 1 forwards;  
 }
-
+td:first-child:hover.day,
+td:first-child:hover.past {
+    background-color: #ecebf4;
+   -webkit-animation: noani 1s 1 forwards;  
+}
 @-webkit-keyframes hov{
   from { background-color: #b9acff; -webkit-box-shadow: 0 0 9px #333; }
-  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
   to { background-color: #dcd6ff; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes lig{
   from { background-color: #cee2a3; -webkit-box-shadow: 0 0 9px #333; }
-  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
   to { background-color: #E7F3CD; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes mod{
   from { background-color: #c7b9c1; -webkit-box-shadow: 0 0 9px #333; }
-  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
   to { background-color: #e1dcdf; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes fir{
   from { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
-  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
   to { background-color: #fdfdfe; -webkit-box-shadow: 0 0 9px #333; }
+}
+@-webkit-keyframes noani{
+  from { background-color: #ecebf4; }
+  to { background-color: #ecebf4; }
 }
 .calendar-header {
 	width: 330px;
