@@ -3,6 +3,7 @@ th, td {
 	width: 46px;
 	text-align: center;
 	vertical-align: middle;
+        background-color: #ecebf4;
 }
 
 td.day {
@@ -10,12 +11,12 @@ td.day {
 }
 
 .light {
-	background-color: green;
+	background-color: #cee2a3;
 	cursor: pointer;
 }
 
 .moderate {
-	background-color: yellow;
+	background-color: #c7b9c1;
 	cursor: pointer;
 }
 
@@ -24,15 +25,78 @@ td.day {
 }
 
 .past {
-	background-color: grey;
+	background-color: #E7F3CD;
 	cursor: normal;
 }
 
 .today {
-	background-color: blue;
+	background-color: #b9acff;
 	cursor: pointer;
 }
+td:first-child {
+    background-color: #ecebf4;   
+}
+td:first-child.today {
+	background-color: #b9acff;
+	cursor: pointer;    
+}
+.calendar {
+    margin: 50px 450px;
+}
+.footer {
+    margin: -75px 450px;
+}
+.today:hover {
+    background-color: #749a02;
+   -webkit-animation-name: hov;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+.light:hover{
+    background-color: #cee2a3;
+   -webkit-animation-name: lig;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    
+}
+.moderate:hover{
+    background-color: #c7b9c1;
+   -webkit-animation-name: mod;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    
+}
+td:first-child:hover{
+    background-color: #b9acff;
+   -webkit-animation-name: fir;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;   
+}
 
+@-webkit-keyframes hov{
+  from { background-color: #b9acff; -webkit-box-shadow: 0 0 9px #333; }
+  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
+  to { background-color: #dcd6ff; -webkit-box-shadow: 0 0 9px #333; }
+}
+@-webkit-keyframes lig{
+  from { background-color: #cee2a3; -webkit-box-shadow: 0 0 9px #333; }
+  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
+  to { background-color: #E7F3CD; -webkit-box-shadow: 0 0 9px #333; }
+}
+@-webkit-keyframes mod{
+  from { background-color: #c7b9c1; -webkit-box-shadow: 0 0 9px #333; }
+  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
+  to { background-color: #e1dcdf; -webkit-box-shadow: 0 0 9px #333; }
+}
+@-webkit-keyframes fir{
+  from { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
+  /*50% { background-color: #dcd6ff; -webkit-box-shadow: 0 0 18px #dcd6ff; }*/
+  to { background-color: #fdfdfe; -webkit-box-shadow: 0 0 9px #333; }
+}
 .calendar-header {
 	width: 330px;
 	display: inline-block;

@@ -4,7 +4,7 @@
 			var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 			var month = months[now.getMonth()];
 			var thisYear = now.getFullYear();
-			var firstDay = new Date(thisYear, thisMonth, 1, 0, 0, 0, 0);
+			var firstDay = new Date(thisYear, thisMonth, 1, 24, 0, 0, 0);
 			var firstDayOfWeek = firstDay.addDays(-firstDay.getDay()); // get the first date of the 5-week calendar
 			var calendar = '<h1><label>' + month + ' &nbsp;&nbsp; ' + thisYear + '</label></h1> '
 				+ '<table class="table-bordered"> <tr> <td class="day text-center">Sun</td> <td class="day text-center">Mon</td> <td class="day text-center">Tue</td> <td class="day text-center">Wed</td> <td class="day text-center">Thu</td> <td class="day text-center">Fri</td> <td class="day text-center">Sat</td> </tr> ';
