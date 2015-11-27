@@ -1,13 +1,47 @@
+		var calendarIncrement = 0;
+		
+		function prevMonth() {
+			calendarIncrement -= 30;
+			getCalendar();
+		}
+		
+		function nextMonth() {
+			calendarIncrement += 30;
+			getCalendar();
+		}
+		
 		function getCalendar() {
 			var now = new Date();
-			var thisMonth = now.getMonth();
+			var thisMonth;
+			var thisYear;
+			if(now.getMonth() + (calendarIncrement / 30) < 12) {
+				thisMonth = now.getMonth() + (calendarIncrement / 30);
+				thisYear = now.getFullYear();
+			} else {
+				thisMonth = now.getMonth() + (calendarIncrement / 30);
+				thisYear = now.getFullYear();
+				while(thisMonth >= 12) {
+					thisMonth -= 12;
+					++thisYear;
+				}
+			}
 			var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-			var month = months[now.getMonth()];
-			var thisYear = now.getFullYear();
+			var month = months[thisMonth];
 			var firstDay = new Date(thisYear, thisMonth, 1, 24, 0, 0, 0);
 			var firstDayOfWeek = firstDay.addDays(-firstDay.getDay()); // get the first date of the 5-week calendar
-			var calendar = '<h1><label>' + month + ' &nbsp;&nbsp; ' + thisYear + '</label></h1> '
-				+ '<table class="table-bordered"> <tr> <td class="day text-center">Sun</td> <td class="day text-center">Mon</td> <td class="day text-center">Tue</td> <td class="day text-center">Wed</td> <td class="day text-center">Thu</td> <td class="day text-center">Fri</td> <td class="day text-center">Sat</td> </tr> ';
+			var calendar = "";
+				if(calendarIncrement > 0) {
+					calendar = '<div class="header">'
+						+ '<button class="left" type="button" onclick="prevMonth()" title="Previous Month">'
+						+ '<img src="./images/previous.png" width="60px" height="60px" alt="previous month button"/></button> &nbsp;&nbsp;';
+				} else {
+					calendar = '<div class="header"><div class="blank left">.</div> &nbsp;&nbsp;';
+				}
+				calendar += '<h1 class="left">' + month + '</h1> &nbsp;&nbsp; <h1 class="right">' + thisYear + '</h1> &nbsp;&nbsp;'
+				+ '<button class="right" type="button" onclick="nextMonth()" title="Next Month">'
+				+ '<img src="./images/next.png" width="60px" height="60px" alt="next month button"/></button></div>'
+				+ '<table class="table-bordered center"><tr><td class="day text-center">Sun</td><td class="day text-center">Mon</td><td class="day text-center">Tue</td>'
+				+ '<td class="day text-center">Wed</td> <td class="day text-center">Thu</td> <td class="day text-center">Fri</td> <td class="day text-center">Sat</td> </tr> ';
 			var calMonth = new Array(6); // least amount that will contain an entire month every time
 			calMonth[0] = new Array(7); // each week contains 7 days
 			calMonth[1] = new Array(7);

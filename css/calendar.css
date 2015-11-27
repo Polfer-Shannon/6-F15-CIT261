@@ -1,13 +1,22 @@
+.container {
+	text-align: center;
+	margin: auto;
+	height: 100%;
+}
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
 th, td {
-	height: 46px;
-	width: 46px;
+	height: 60px;
+	width: 60px;
 	text-align: center;
 	vertical-align: middle;
         background-color: #ecebf4;
 }
 
 td.day {
-	height: 25px;
+	height: 30px;
 }
 
 .light {
@@ -41,10 +50,15 @@ td:first-child.today {
 	cursor: pointer;    
 }
 .calendar {
-    margin: 50px 450px;
+	margin: 0 auto;
+	padding-bottom: 60px;
 }
 .footer {
-    margin: -75px 450px;
+	position: absolute;
+	height: 60px;
+	width: 100%;
+    bottom: 10px;
+	text-align: center;
 }
 .today:hover {
     background-color: #749a02;
@@ -87,17 +101,32 @@ td:first-child:hover.past {
   from { background-color: #ecebf4; }
   to { background-color: #ecebf4; }
 }
-.calendar-header {
-	width: 330px;
+.header h1 {
 	display: inline-block;
 }
-
+.blank {
+	width: 60px;
+	visibility: hidden;
+}
 .left {
 	text-align: left;
 	display: inline-block;
 }
-
 .right {
 	text-align: right;
 	display: inline-block;
+}
+.next{
+    background:url(../images/next.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:60px;
+    height:60px;
+}
+.previous{
+    background:url(../images/previous.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:60px;
+    height:60px;
 }
