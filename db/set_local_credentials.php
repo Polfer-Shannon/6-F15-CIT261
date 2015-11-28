@@ -5,5 +5,5 @@
 
 $dbHost = "127.0.0.1";
 $dbUser = "howtote5_php";
-$dbPassword = "1cangetin";
+$dbPassword = "";
 ?>
