@@ -106,26 +106,7 @@ td:first-child:hover.past {
   from { background-color: #ecebf4; }
   to { background-color: #ecebf4; }
 }
-@keyframes hov{
-  from { background-color: #b9acff; box-shadow: 0 0 9px #333; }
-  to { background-color: #dcd6ff; box-shadow: 0 0 9px #333; }
-}
-@keyframes lig{
-  from { background-color: #cee2a3; box-shadow: 0 0 9px #333; }
-  to { background-color: #E7F3CD; box-shadow: 0 0 9px #333; }
-}
-@keyframes mod{
-  from { background-color: #c7b9c1; box-shadow: 0 0 9px #333; }
-  to { background-color: #e1dcdf; box-shadow: 0 0 9px #333; }
-}
-@keyframes fir{
-  from { background-color: #ecebf4; box-shadow: 0 0 9px #333; }
-  to { background-color: #fdfdfe; box-shadow: 0 0 9px #333; }
-}
-@keyframes noani{
-  from { background-color: #ecebf4; }
-  to { background-color: #ecebf4; }
-}
+
 .header h1 {
 	display: inline-block;
 }
