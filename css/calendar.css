@@ -20,12 +20,12 @@ td.day {
 }
 
 .light {
-	background-color: #cee2a3;
+	background-color: #A5DD9F;
 	cursor: pointer;
 }
 
 .moderate {
-	background-color: #c7b9c1;
+	background-color: #89E3D1;
 	cursor: pointer;
 }
 
@@ -34,19 +34,19 @@ td.day {
 }
 
 .past {
-	background-color: #E7F3CD;
+	background-color: #CCEDC8;
 	cursor: auto;
 }
 
 .today {
-	background-color: #b9acff;
+	background-color: #5ECBB6;
 	cursor: pointer;
 }
 td:first-child {
     background-color: #ecebf4;   
 }
 td:first-child.today {
-	background-color: #b9acff;
+	background-color: #37e4e1;
 	cursor: pointer;    
 }
 .calendar {
@@ -61,22 +61,22 @@ td:first-child.today {
 	text-align: center;
 }
 .today:hover {
-    background-color: #749a02;
+    background-color: #5ECBB6;
    -webkit-animation: hov 1s 1 forwards;
    animation: hov 1s 1 forwards;
 }
 .light:hover{
-    background-color: #cee2a3;
+    background-color: #A5DD9F;
    -webkit-animation: lig 1s 1 forwards;   
    animation: lig 1s 1 forwards;   
 }
 .moderate:hover{
-    background-color: #c7b9c1;
+    background-color: #89E3D1;
    -webkit-animation: mod 1s 1 forwards; 
    animation: mod 1s 1 forwards; 
 }
 td:first-child:hover{
-    background-color: #b9acff;
+    background-color: #ecebf4;
    -webkit-animation: fir 1s 1 forwards;  
    animation: fir 1s 1 forwards;  
 }
@@ -87,20 +87,20 @@ td:first-child:hover.past {
    animation: noani 1s 1 forwards;  
 }
 @-webkit-keyframes hov{
-  from { background-color: #b9acff; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #dcd6ff; -webkit-box-shadow: 0 0 9px #333; }
+  from { background-color: #5ECBB6; -webkit-box-shadow: 0 0 9px #333; }
+  to { background-color: #C1F4EA; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes lig{
-  from { background-color: #cee2a3; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #E7F3CD; -webkit-box-shadow: 0 0 9px #333; }
+  from { background-color: #A5DD9F; -webkit-box-shadow: 0 0 9px #333; }
+  to { background-color: #CCEDC8; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes mod{
-  from { background-color: #c7b9c1; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #e1dcdf; -webkit-box-shadow: 0 0 9px #333; }
+  from { background-color: #89E3D1; -webkit-box-shadow: 0 0 9px #333; }
+  to { background-color: #BAF4E9; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes fir{
   from { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #fdfdfe; -webkit-box-shadow: 0 0 9px #333; }
+  to { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
 }
 @-webkit-keyframes noani{
   from { background-color: #ecebf4; }
