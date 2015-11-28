@@ -12,39 +12,28 @@ GRANT SELECT, CREATE, INSERT, DELETE, UPDATE, ALTER ON sched.* TO 'howtote5_php'
 CREATE TABLE user
 (
 user_id int NOT NULL AUTO_INCREMENT,
-user_name varchar(255) NOT NULL,
-first_name varchar(255),
-last_name varchar(255),
+name varchar(255) NOT NULL,
 email varchar(255),
+phone varchar(20),
 PRIMARY KEY (user_id)
 );
 
 CREATE TABLE appointment
 (
 appointment_id int NOT NULL AUTO_INCREMENT,
+day date NOT NULL,
+appointment_time time NOT NULL,
+location varchar(255),
 user_id int NOT NULL,
-appointment_time date NOT NULL,
-appointment_place varchar(255),
 PRIMARY KEY (appointment_id)
 );
 
-CREATE TABLE admin
+CREATE TABLE availability
 (
-admin_id int NOT NULL AUTO_INCREMENT,
-user_id int NOT NULL,
-business_open time NOT NULL,
-business_close time NOT NULL,
-appointment_place varchar(255),
-PRIMARY KEY (admin_id)
-);
-
-CREATE TABLE admin_hours
-(
-admin_hours_id int NOT NULL AUTO_INCREMENT,
-admin_id int NOT NULL,
+availability_id int NOT NULL AUTO_INCREMENT,
 start_time time NOT NULL,
 end_time time NOT NULL,
-unavailable boolean,
 day_of_week varchar(8),
-PRIMARY KEY (admin_hours_id)
+unavailable boolean,
+PRIMARY KEY (availability_id)
 );
