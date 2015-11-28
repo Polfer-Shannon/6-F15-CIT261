@@ -4,8 +4,8 @@
 CREATE USER 'howtote5_php'@'localhost' IDENTIFIED BY 'password';
 
 -- create database named sched
-create database sched;
-use sched;
+create database howtote5_sched;
+use howtote5_sched;
 
 GRANT SELECT, CREATE, INSERT, DELETE, UPDATE, ALTER ON sched.* TO 'howtote5_php'@'localhost';
 
