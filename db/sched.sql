@@ -7,7 +7,7 @@ CREATE USER 'howtote5_php'@'localhost' IDENTIFIED BY 'password';
 create database howtote5_sched;
 use howtote5_sched;
 
-GRANT SELECT, CREATE, INSERT, DELETE, UPDATE, ALTER ON sched.* TO 'howtote5_php'@'localhost';
+GRANT SELECT, CREATE, INSERT, DELETE, UPDATE, ALTER ON howtote5_sched.* TO 'howtote5_php'@'localhost';
 
 CREATE TABLE user
 (
@@ -21,7 +21,7 @@ PRIMARY KEY (user_id)
 CREATE TABLE appointment
 (
 appointment_id int NOT NULL AUTO_INCREMENT,
-day date NOT NULL,
+appointment_date date NOT NULL,
 appointment_time time NOT NULL,
 location varchar(255),
 user_id int NOT NULL,
@@ -37,3 +37,5 @@ day_of_week varchar(8),
 unavailable boolean,
 PRIMARY KEY (availability_id)
 );
+
+insert into user values(NULL, 'adam', 'quintonish@gmail.com', '99500129392');
