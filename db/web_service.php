@@ -6,6 +6,7 @@ $user = $cleanData["user"];
 
 require 'load_db.php';
 try {
+  GLOBAL $db;
   $db = loadDB();
   //TODO: load appointments, otherwise display blanks (currently loading all appointments for day)
   //TODO: Do not constrain by user, but do show which user
