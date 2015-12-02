@@ -57,7 +57,7 @@ td:first-child.today {
 	position: absolute;
 	height: 60px;
 	width: 100%;
-    bottom: 10px;
+        bottom: 10px;
 	text-align: center;
 }
 .today:hover {
@@ -135,4 +135,85 @@ td:first-child:hover.past {
     border:none;
     width:60px;
     height:60px;
+}
+/* Animations for forms or panels*/
+
+.dayPanel{
+    margin: 0 auto;
+    width: 300px;
+    height: 500px;
+    border: #37e4e1 solid 3px;  
+}       
+.timeSlot{
+    margin: 10px auto;
+    position: relative;
+    width: 175px;
+    height: 25px;
+    border: #37e4e1 solid 1px;
+    text-align: center;
+}
+.avail{
+    background-color: #089E22;
+}
+.unavail{
+    background: #AA4C39;
+}
+.sbutton{
+    position: relative;
+    margin: 10px 200px;
+    background: #37e4e1;
+}
+.fadeIn{
+        animation: fadeIn 1.5s ease-in;
+	-webkit-animation: fadeIn 1.5s ease-in;		
+	visibility: visible !important;	
+}
+
+@keyframes fadeIn {
+	0% {
+		transform: scale(0);
+		opacity: 0.0;		
+	}	
+	100% {
+		transform: scale(1);
+		opacity: 1;	
+	}		
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		-webkit-transform: scale(0);
+		opacity: 0.0;		
+	}	
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1;	
+	}		
+}
+.fadeOut{
+        animation: fadeOut 1.5s ease-in;
+	-webkit-animation: fadeOut 1.5s ease-in;		
+	visibility: visible !important;	
+}
+
+@keyframes fadeOut {
+	0% {
+		transform: scale(1);
+		opacity: 1;		
+	}	
+	100% {
+		transform: scale(0);
+		opacity: 0.0;	
+	}		
+}
+
+@-webkit-keyframes fadeOut {
+	0% {
+		-webkit-transform: scale(1);
+		opacity: 1;		
+	}	
+	100% {
+		-webkit-transform: scale(0);
+		opacity: 0.0;	
+	}		
 }
