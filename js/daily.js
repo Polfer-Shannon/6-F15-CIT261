@@ -74,7 +74,7 @@ function listTimes(month, day, year) {
 	
 	document.getElementById('daily').innerHTML = schedule;
 
-	document.getElementById('calendar').innerHTML = '';	
+	document.getElementById('calendar').innerHTML = '';
 }
 
 function prevDay() {

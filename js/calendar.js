@@ -82,6 +82,7 @@ function getCalendar() {
 		calendar += '</tr>';
 	}
 	document.getElementById('calendar').innerHTML = calendar;
+	
 }
                 
 Date.prototype.addDays = function (n) {
@@ -95,4 +96,5 @@ Date.prototype.addDays = function (n) {
 function backHome() {
     getCalendar();
 	document.getElementById('daily').innerHTML = '';
+	document.getElementById('form').innerHTML = '';
 }
