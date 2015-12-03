@@ -39,7 +39,7 @@ function database(stringified, url) {
     	//response
     	var data = (http.responseText);
     	console.log(data);
-        document.getElementById('daily').innerHTML = data;
+        //document.getElementById('daily').innerHTML = data;
       }
   }
   http.send(stringified);
@@ -55,22 +55,20 @@ function listTimes(month, day, year) {
 		+ '<button class="right" type="button" onclick="nextDay()" title="Next Day">'
 		+ '<img src="./images/next.png" width="60px" height="60px" alt="next Day button"/></button></div>'
 		+ '<div class="dayPanel fadeIn">';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">7am-8am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">8am-9am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">9am-10am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">8am-9am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">9am-10am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">10am-11am</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">11am-12pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">12pm-1pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">1pm-2pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">2pm-3pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn avail" onclick="form()">3pm-4pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">4pm-5pm</div></a>';
-	schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn unavail" onclick="form()">5pm-6pm</div></a>';
+			var appointmentHours = [ 
+		  { time:'7am-8am' }, { time:'8am-9am' }, { time:'9am-10am' }, { time:'10am-11am' }
+		, { time:'11am-12pm'}, { time:'12pm-1pm' },	{ time:'1pm-2pm' }, { time:'2pm-3pm' }
+		, { time:'4pm-5pm' }, { time:'5pm-6pm' }
+		];
+		for (var i = 0; i < appointmentHours.length; i++) {
+			console.log(appointmentHours[i].time);
+			//avail or unavail class
+			var a = 'avail';
+			schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn '
+			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
+		}
 	schedule += '</div>';
 	schedule += '<br>';
-	console.log("here");
 	
 	document.getElementById('daily').innerHTML = schedule;
 
