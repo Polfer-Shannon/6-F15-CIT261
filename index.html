@@ -9,13 +9,11 @@
     <link type="text/css" rel="stylesheet" href="css/calendar.css" media="screen" />
 </head>
 <body class="container" onload="getCalendar()">
-	<br/>
-    <div class="calendar" id="calendar"></div> <!-- end calendar -->
-	<br/>
-	<div class="daily" id="daily"></div> <!-- end daily -->
-	
-	<div class="form" id="form"></div>
-	<br/>
+	<div class="content">
+		<div class="calendar" id="calendar"></div> <!-- end calendar -->
+		<div class="daily" id="daily"></div> <!-- end daily -->
+		<div class="form" id="form"></div>
+	</div> <!-- end content -->
     <footer class="footer">
         <p>CIT261 Group 6</p>
     </footer>
@@ -23,7 +21,6 @@
 		window.appointments = "";
 	</script>
 	<script type="text/javascript" src="js/calendar.js" ></script>
-	<script type="text/javascript" src="js/onclicks.js" ></script>
 	<script type="text/javascript" src="js/daily.js" ></script>
 </body>
 </html>

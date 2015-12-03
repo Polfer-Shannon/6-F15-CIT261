@@ -3,6 +3,12 @@
 	margin: auto;
 	height: 100%;
 }
+.header {
+	display:flex;
+	justify-content: center;
+	margin:auto;
+	padding: 1em;
+}
 table.center {
 	margin-left: auto;
 	margin-right: auto;
@@ -14,30 +20,24 @@ th, td {
 	vertical-align: middle;
         background-color: #ecebf4;
 }
-
 td.day {
 	height: 30px;
 }
-
 .light {
 	background-color: #A5DD9F;
 	cursor: pointer;
 }
-
 .moderate {
 	background-color: #89E3D1;
 	cursor: pointer;
 }
-
 .heavy {
 	background-color: red;
 }
-
 .past {
 	background-color: #CCEDC8;
 	cursor: auto;
 }
-
 .today {
 	background-color: #5ECBB6;
 	cursor: pointer;
@@ -51,6 +51,8 @@ td:first-child.today {
 }
 .calendar {
 	margin: 0 auto;
+}
+.content {
 	padding-bottom: 60px;
 }
 .footer {
@@ -59,56 +61,53 @@ td:first-child.today {
 	width: 100%;
         bottom: 10px;
 	text-align: center;
+	clear: both;
 }
 .today:hover {
     background-color: #5ECBB6;
    -webkit-animation: hov 1s 1 forwards;
    animation: hov 1s 1 forwards;
 }
-.light:hover{
+.light:hover {
     background-color: #A5DD9F;
-   -webkit-animation: lig 1s 1 forwards;   
-   animation: lig 1s 1 forwards;   
+   -webkit-animation: lig 1s 1 forwards;
+   animation: lig 1s 1 forwards;
 }
-.moderate:hover{
+.moderate:hover {
     background-color: #89E3D1;
-   -webkit-animation: mod 1s 1 forwards; 
-   animation: mod 1s 1 forwards; 
+   -webkit-animation: mod 1s 1 forwards;
+   animation: mod 1s 1 forwards;
 }
-td:first-child:hover{
+td:first-child:hover {
     background-color: #ecebf4;
-   -webkit-animation: fir 1s 1 forwards;  
-   animation: fir 1s 1 forwards;  
+   -webkit-animation: fir 1s 1 forwards;
+   animation: fir 1s 1 forwards;
 }
 td:first-child:hover.day,
 td:first-child:hover.past {
     background-color: #ecebf4;
-   -webkit-animation: noani 1s 1 forwards;  
-   animation: noani 1s 1 forwards;  
+   -webkit-animation: noani 1s 1 forwards;
+   animation: noani 1s 1 forwards;
 }
-@-webkit-keyframes hov{
+@-webkit-keyframes hov {
   from { background-color: #5ECBB6; -webkit-box-shadow: 0 0 9px #333; }
   to { background-color: #C1F4EA; -webkit-box-shadow: 0 0 9px #333; }
 }
-@-webkit-keyframes lig{
+@-webkit-keyframes lig {
   from { background-color: #A5DD9F; -webkit-box-shadow: 0 0 9px #333; }
   to { background-color: #CCEDC8; -webkit-box-shadow: 0 0 9px #333; }
 }
-@-webkit-keyframes mod{
+@-webkit-keyframes mod {
   from { background-color: #89E3D1; -webkit-box-shadow: 0 0 9px #333; }
   to { background-color: #BAF4E9; -webkit-box-shadow: 0 0 9px #333; }
 }
-@-webkit-keyframes fir{
+@-webkit-keyframes fir {
   from { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
   to { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
 }
-@-webkit-keyframes noani{
+@-webkit-keyframes noani {
   from { background-color: #ecebf4; }
   to { background-color: #ecebf4; }
-}
-
-.header h1 {
-	display: inline-block;
 }
 .blank {
 	width: 60px;
@@ -122,14 +121,14 @@ td:first-child:hover.past {
 	text-align: right;
 	display: inline-block;
 }
-.next{
+.next {
     background:url(../images/next.png) no-repeat;
     cursor:pointer;
     border:none;
     width:60px;
     height:60px;
 }
-.previous{
+.previous {
     background:url(../images/previous.png) no-repeat;
     cursor:pointer;
     border:none;
@@ -137,14 +136,13 @@ td:first-child:hover.past {
     height:60px;
 }
 /* Animations for forms or panels*/
-
-.dayPanel{
+.dayPanel {
     margin: 0 auto;
-    width: 300px;
-    height: 500px;
-    border: #37e4e1 solid 3px;  
+	width: 30%;
+    border: #37e4e1 solid 3px;
+	padding: 1em;
 }       
-.timeSlot{
+.timeSlot {
     margin: 10px auto;
     position: relative;
     width: 175px;
@@ -152,68 +150,64 @@ td:first-child:hover.past {
     border: #37e4e1 solid 1px;
     text-align: center;
 }
-.avail{
+.avail {
     background-color: #089E22;
 }
-.unavail{
+.unavail {
     background: #AA4C39;
 }
-.sbutton{
+.sbutton {
     position: relative;
     margin: 10px 200px;
     background: #37e4e1;
 }
-.fadeIn{
+.fadeIn {
         animation: fadeIn 1.5s ease-in;
 	-webkit-animation: fadeIn 1.5s ease-in;		
 	visibility: visible !important;	
 }
-
 @keyframes fadeIn {
 	0% {
 		transform: scale(0);
-		opacity: 0.0;		
-	}	
+		opacity: 0.0;
+	}
 	100% {
 		transform: scale(1);
-		opacity: 1;	
-	}		
+		opacity: 1;
+	}
 }
-
 @-webkit-keyframes fadeIn {
 	0% {
 		-webkit-transform: scale(0);
-		opacity: 0.0;		
-	}	
+		opacity: 0.0;
+	}
 	100% {
 		-webkit-transform: scale(1);
-		opacity: 1;	
-	}		
+		opacity: 1;
+	}
 }
-.fadeOut{
-        animation: fadeOut 1.5s ease-in;
-	-webkit-animation: fadeOut 1.5s ease-in;		
-	visibility: visible !important;	
+.fadeOut {
+    animation: fadeOut 1.5s ease-in;
+	-webkit-animation: fadeOut 1.5s ease-in;
+	visibility: visible !important;
 }
-
 @keyframes fadeOut {
 	0% {
 		transform: scale(1);
-		opacity: 1;		
-	}	
+		opacity: 1;
+	}
 	100% {
 		transform: scale(0);
-		opacity: 0.0;	
-	}		
+		opacity: 0.0;
+	}
 }
-
 @-webkit-keyframes fadeOut {
 	0% {
 		-webkit-transform: scale(1);
-		opacity: 1;		
-	}	
+		opacity: 1;
+	}
 	100% {
 		-webkit-transform: scale(0);
-		opacity: 0.0;	
-	}		
+		opacity: 0.0;
+	}
 }

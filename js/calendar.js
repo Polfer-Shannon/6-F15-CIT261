@@ -33,16 +33,16 @@ function getCalendar() {
 	var firstDayOfWeek = firstDay.addDays(-firstDay.getDay()); // get the first date of the 5-week calendar
 	var calendar = "";
 	if(calendarIncrement > 0) {
-		calendar = '<div class="header">'
+		calendar = '<div class="header fadeIn">'
 			+ '<button class="left" type="button" onclick="prevMonth()" title="Previous Month">'
 			+ '<img src="./images/previous.png" width="60px" height="60px" alt="previous month button"/></button> &nbsp;&nbsp;';
 	} else {
-		calendar = '<div class="header"><div class="blank left">.</div> &nbsp;&nbsp;';
+		calendar = '<div class="header fadeIn"><div class="blank left">.</div> &nbsp;&nbsp;';
 	}
 	calendar += '<h1 class="left">' + month + '</h1> &nbsp;&nbsp; <h1 class="right">' + thisYear + '</h1> &nbsp;&nbsp;'
 		+ '<button class="right" type="button" onclick="nextMonth()" title="Next Month">'
 		+ '<img src="./images/next.png" width="60px" height="60px" alt="next month button"/></button></div>'
-		+ '<table class="table-bordered center"><tr><td class="day text-center">Sun</td><td class="day text-center">Mon</td><td class="day text-center">Tue</td>'
+		+ '<table class="table-bordered center fadeIn"><tr><td class="day text-center">Sun</td><td class="day text-center">Mon</td><td class="day text-center">Tue</td>'
 		+ '<td class="day text-center">Wed</td> <td class="day text-center">Thu</td> <td class="day text-center">Fri</td> <td class="day text-center">Sat</td> </tr> ';
 	var calMonth = new Array(6); // least amount that will contain an entire month every time
 	calMonth[0] = new Array(7); // each week contains 7 days
@@ -62,20 +62,20 @@ function getCalendar() {
 		for(var j = 0; j < 7; j++) {
 			var currDate = new Date(calMonth[i][j]);
 			var currDay = currDate.getDate();
-			var currMonth = currDate.getMonth() + 1;
+			var currMonth = currDate.getMonth();
 			var currYear = currDate.getFullYear();
 			
-			if(currDay == now.getDate() && currDate.getMonth() == now.getMonth()) {
-				calendar += '<td class="today" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
+			if(currDay == now.getDate() && currDate.getMonth() == now.getMonth() && currDate.getFullYear() == now.getFullYear()) {
+				calendar += '<td class="today" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
 			} else if(currDate < now) {
 				calendar += '<td class="past"><s>' + currDay + '</s></td>';
 			} else if(j == 0) {
 				calendar += '<td>' + currDay + '</td>';
 			} else if(currDate.getMonth() > now.getMonth() && currDate.getYear() == now.getYear()
 				|| currDate.getMonth() < now.getMonth() && currDate.getYear() < now.getYear()) {
-				calendar += '<td class="moderate" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
+				calendar += '<td class="moderate" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
 			} else {
-				calendar += '<td class="light" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
+				calendar += '<td class="light" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
 			}
 
 		}
@@ -93,5 +93,6 @@ Date.prototype.addDays = function (n) {
 
 // Temporary submit button on times panel
 function backHome() {
-    location.href="index.html";
+    getCalendar();
+	document.getElementById('daily').innerHTML = '';
 }
