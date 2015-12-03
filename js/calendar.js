@@ -1,3 +1,5 @@
+var CALENDAR = {};
+
 var calendarIncrement = 0;
 		
 function prevMonth() {
@@ -62,18 +64,20 @@ function getCalendar() {
 			var currDay = currDate.getDate();
 			var currMonth = currDate.getMonth() + 1;
 			var currYear = currDate.getFullYear();
+			
 			if(currDay == now.getDate() && currDate.getMonth() == now.getMonth()) {
-				calendar += '<td class="today" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));location.href="temp/times.html">' + currDay + '</td>';
+				calendar += '<td class="today" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
 			} else if(currDate < now) {
 				calendar += '<td class="past"><s>' + currDay + '</s></td>';
 			} else if(j == 0) {
 				calendar += '<td>' + currDay + '</td>';
 			} else if(currDate.getMonth() > now.getMonth() && currDate.getYear() == now.getYear()
 				|| currDate.getMonth() < now.getMonth() && currDate.getYear() < now.getYear()) {
-				calendar += '<td class="moderate" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));location.href="temp/times.html">' + currDay + '</td>';
+				calendar += '<td class="moderate" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
 			} else {
-				calendar += '<td class="light" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));location.href="temp/times.html">' + currDay + '</td>';
+				calendar += '<td class="light" onclick=(dayClick("' + currDay  +'","' + currMonth + '","' + currYear + '"));listTimes("' + currDay  +'","' + currMonth + '","' + currYear + '")>' + currDay + '</td>';
 			}
+
 		}
 		calendar += '</tr>';
 	}
@@ -89,5 +93,5 @@ Date.prototype.addDays = function (n) {
 
 // Temporary submit button on times panel
 function backHome() {
-    location.href="../index.html";
+    location.href="index.html";
 }
