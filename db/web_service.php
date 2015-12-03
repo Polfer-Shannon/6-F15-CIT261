@@ -8,8 +8,6 @@ if ($cleanData["day"] < 10) {
 }
 $date .= $cleanData["day"];
 
-$user = $cleanData["user"];
-
 require 'load_db.php';
 try {
   GLOBAL $db;
@@ -21,16 +19,18 @@ try {
   $stmnt->bindParam(':date', $date);
   $stmnt->execute();
 
-  $appoints = "{date: '".$date."', times:[";
+  //$appoints = "{'date': '".$date."', 'times':[";
+  $appoints = '{"date": "'.$date.'", "times":[';
   while($row = $stmnt->fetch())
   {
-    //$row['appointment_date']
-    $appoints .= "{ time: ".$row['appointment_time']."},";
-    //, location: '".$row['location']."'
+    $location = $row['location'];
+    $hour = ltrim($row['appointment_time'], "0");//remove times beginning with 0
+    $hour = current(explode(':', $hour));
+    $appoints .= '{"hour":"'.$hour.'","location":"'.$location.'"},';
   }
   //remove trailing comma
-  rtrim($appoints, ",");
-  $appoints .= "]}";
+  $appoints = rtrim($appoints, ",");
+  $appoints .= ']}';
 
   echo $appoints;
 }
