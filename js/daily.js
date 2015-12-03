@@ -38,8 +38,7 @@ function database(stringified, url) {
     if (http.readyState == 4 && http.status == 200) {
     	//response
     	var data = (http.responseText);
-    	console.log(data);
-        //document.getElementById('daily').innerHTML = data;
+    	console.log('DB: ' + data);
       }
   }
   http.send(stringified);
@@ -61,14 +60,13 @@ function listTimes(month, day, year) {
 		, { time:'4pm-5pm' }, { time:'5pm-6pm' }
 		];
 		for (var i = 0; i < appointmentHours.length; i++) {
-			console.log(appointmentHours[i].time);
 			//avail or unavail class
 			var a = 'avail';
 			schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn '
 			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
 		}
-	schedule += '</div>';
-	schedule += '<br>';
+		schedule += '</div>';
+		schedule += '<br>';
 	
 	document.getElementById('daily').innerHTML = schedule;
 

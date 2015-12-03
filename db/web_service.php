@@ -1,7 +1,13 @@
 <?php
 $postedData = $HTTP_RAW_POST_DATA;
 $cleanData = json_decode($postedData, true);
-$date = $cleanData["year"]."-".$cleanData["month"]."-".$cleanData["day"];
+
+$date = $cleanData["year"]."-".($cleanData["month"]+1)."-";
+if ($cleanData["day"] < 10) {
+  $date .= "0"; 
+}
+$date .= $cleanData["day"];
+
 $user = $cleanData["user"];
 
 require 'load_db.php';
@@ -10,17 +16,23 @@ try {
   $db = loadDB();
   //TODO: load appointments, otherwise display blanks (currently loading all appointments for day)
   //TODO: Do not constrain by user, but do show which user
-  $query = 'select appointment_time, appointment_date from appointment where appointment_date = :date and user_id = (select user_id from user where name = :user)'; 
+  $query = 'select appointment_time, location from appointment where appointment_date = :date'; 
   $stmnt = $db->prepare($query);
   $stmnt->bindParam(':date', $date);
-  $stmnt->bindParam(':user', $user);
   $stmnt->execute();
+
+  $appoints = "{date: '".$date."', times:[";
   while($row = $stmnt->fetch())
   {
-    echo $row['appointment_date']." Time:";
-    echo $row['appointment_time']." ";
+    //$row['appointment_date']
+    $appoints .= "{ time: ".$row['appointment_time']."},";
+    //, location: '".$row['location']."'
   }
-  echo "SOMETHING";
+  //remove trailing comma
+  rtrim($appoints, ",");
+  $appoints .= "]}";
+
+  echo $appoints;
 }
 catch (Exception $ex)
 {
