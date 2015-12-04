@@ -1,0 +1,25 @@
+| appointment | CREATE TABLE `appointment` (
+  `appointment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `appointment_date` date DEFAULT NULL,
+  `appointment_time` time NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`appointment_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 |
+
+| availability | CREATE TABLE `availability` (
+  `availability_id` int(11) NOT NULL AUTO_INCREMENT,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `day_of_week` varchar(8) DEFAULT NULL,
+  `unavailable` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`availability_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 |
+
+| user  | CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 |
