@@ -38,7 +38,15 @@ function database(stringified, url) {
     if (http.readyState == 4 && http.status == 200) {
     	//response
     	var data = (http.responseText);
-    	console.log('DB: ' + data);
+    	data = JSON.parse(data);
+    	console.log(data);
+    	for (var i = 0; i < data.times.length; i++) {
+console.log(data.times[i].hour);
+var foundHour = data.times[i].hour;
+//change availability flag of hours diplay
+var hourView = document.getElementById('hour-'+foundHour);
+hourView.className = hourView.className + " unavail";
+    	}
       }
   }
   http.send(stringified);
@@ -55,14 +63,16 @@ function listTimes(month, day, year) {
 		+ '<img src="./images/next.png" width="60px" height="60px" alt="next Day button"/></button></div>'
 		+ '<div class="dayPanel fadeIn">';
 			var appointmentHours = [ 
-		  { time:'7am-8am' }, { time:'8am-9am' }, { time:'9am-10am' }, { time:'10am-11am' }
-		, { time:'11am-12pm'}, { time:'12pm-1pm' },	{ time:'1pm-2pm' }, { time:'2pm-3pm' }
-		, { time:'4pm-5pm' }, { time:'5pm-6pm' }
+		  { time:'7am-8am', mil:'7' }, { time:'8am-9am', mil:'8' }, { time:'9am-10am', mil:'9' }
+		  , { time:'10am-11am', mil:'10' }, { time:'11am-12pm', mil:'11'}, { time:'12pm-1pm', mil:'12' }
+		  ,	{ time:'1pm-2pm', mil:'13' }, { time:'2pm-3pm', mil:'14' }, { time:'3pm-4pm', mil:'15' }
+		, { time:'4pm-5pm', mil:'16' }, { time:'5pm-6pm', mil:'17' }
 		];
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<a href="#" onclick="form();event.preventDefault();"><div class="timeSlot fadeIn '
+			schedule += '<a href="#" onclick="form();event.preventDefault();"><div id="hour-'+
+			appointmentHours[i].mil +'" class="timeSlot fadeIn '
 			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
 		}
 		schedule += '</div>';
