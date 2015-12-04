@@ -29,6 +29,7 @@ console.log(JSON.stringify(jsonString));
 	listTimes(month, day, year);
 }
 
+//load appointments
 //call a php file that queries db, then display change on page
 function database(stringified, url) {
   var http = new XMLHttpRequest(); 
@@ -41,11 +42,10 @@ function database(stringified, url) {
     	data = JSON.parse(data);
     	console.log(data);
     	for (var i = 0; i < data.times.length; i++) {
-console.log(data.times[i].hour);
-var foundHour = data.times[i].hour;
-//change availability flag of hours diplay
-var hourView = document.getElementById('hour-'+foundHour);
-hourView.className = hourView.className + " unavail";
+			var foundHour = data.times[i].hour;
+			//change availability flag of hours diplay
+			var hourView = document.getElementById('hour-'+foundHour);
+			hourView.className = "timeSlot fadeIn unavail";
     	}
       }
   }
@@ -71,7 +71,7 @@ function listTimes(month, day, year) {
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<a href="#" onclick="form();event.preventDefault();"><div id="hour-'+
+			schedule += '<a href="#" onclick="form('+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
 			appointmentHours[i].mil +'" class="timeSlot fadeIn '
 			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
 		}
@@ -94,7 +94,8 @@ function nextDay() {
 }
 
 // form for schedule
-function form() {
+function form(hourClicked) {
+
 	var form = '<form id="schedule_form" action="#" method="POST" enctype="multipart/form-data">';
 	form += '<div class="row">';
 		form += '<label for="name">Your name:</label><br />';
@@ -108,9 +109,31 @@ function form() {
 		form += '<label for="message">Your message:</label><br />';
 		form += '<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />';
 	form += '</div>';
-	form += '<input id="submit_button" type="submit" value="Schedule Appointment" />';
+		form += '<div class="row">';
+		form += '<label for="location">Location:</label><br />';
+		form += '<input id="location" class="input" name="location" type="text" value="" size="30" /><br />';
+	form += '</div>';
+	form += '<input id="submit_button" type="button" onclick="makeAppoint('+hourClicked+');" value="Schedule Appointment" />';
 	form += '</form>'
 	
 	document.getElementById('form').innerHTML = form;
 }
-	
+
+function makeAppoint(hour) {
+	console.log('Hour passed in: ' +hour);
+	var user = localStorage.getItem('user');
+	if (user == null) {
+		user = 'adam';
+	}
+	var jsonString = {
+                      month: 11,
+					  day: 3,
+                      year: 2015,
+                      user: user,
+                      location: document.getElementById('location').value,
+                      hour: hour
+                     };
+	var stringified = JSON.stringify(jsonString);
+	database(stringified, 'db/web_service.php');
+	document.getElementById('form').innerHTML = 'Appointment Sent to DB';
+}

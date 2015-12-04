@@ -7,19 +7,35 @@ if ($cleanData["day"] < 10) {
   $date .= "0"; 
 }
 $date .= $cleanData["day"];
+$user = $cleanData["user"];
+
+//decide whether to insert. alternatively select only
+$shouldInsert = $cleanData["hour"];
+if ($shouldInsert) {
+  $appointHour = $cleanData["hour"].":00:00";
+  $appointLocation = $cleanData["location"];
+}
 
 require 'load_db.php';
 try {
   GLOBAL $db;
   $db = loadDB();
-  //TODO: load appointments, otherwise display blanks (currently loading all appointments for day)
-  //TODO: Do not constrain by user, but do show which user
+
+  if ($shouldInsert) {
+    $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user))';
+    $insertStmnt = $db->prepare($insertQuery);
+    $insertStmnt->bindParam(':date', $date);
+    $insertStmnt->bindParam(':hour', $appointHour);
+    $insertStmnt->bindParam(':location', $appointLocation);
+    $insertStmnt->bindParam(':user', $user);
+
+    $insertStmnt->execute();
+  }
   $query = 'select appointment_time, location from appointment where appointment_date = :date'; 
   $stmnt = $db->prepare($query);
   $stmnt->bindParam(':date', $date);
   $stmnt->execute();
 
-  //$appoints = "{'date': '".$date."', 'times':[";
   $appoints = '{"date": "'.$date.'", "times":[';
   while($row = $stmnt->fetch())
   {
@@ -33,11 +49,12 @@ try {
   $appoints .= ']}';
 
   echo $appoints;
+
 }
 catch (Exception $ex)
 {
-	echo "Error with DB. ".$ex;
-	die();
+  echo "Error with DB. ".$ex;
+  die();
 };
 
 die();
