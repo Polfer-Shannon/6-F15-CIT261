@@ -71,7 +71,7 @@ function listTimes(month, day, year) {
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<a href="#" onclick="form('+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
+			schedule += '<a href="#" class="timeFont" onclick="form('+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
 			appointmentHours[i].mil +'" class="timeSlot fadeIn '
 			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
 		}

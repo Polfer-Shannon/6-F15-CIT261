@@ -26,9 +26,9 @@ th, td {
         border: #37e4e1 outset 3px;
 }
 .moderate {
-	background-color: #94a956;
+	background: linear-gradient(to bottom,  #FFBF3E 0%, #FFDD98 100%);
 	cursor: pointer;
-        border: #94a956 solid 3px;
+        border: #FFDD98 outset 3px;
 }
 .heavy {
 	background-color: #FF4D4D;
@@ -68,7 +68,7 @@ td.day {
 	padding-bottom: 60px;
 }
 .footer {
-	position: absolute;
+	position: relative;
 	height: 60px;
 	width: 100%;
         bottom: 10px;
@@ -86,7 +86,7 @@ td.day {
    animation: lig 1s 1 forwards;
 }
 .moderate:hover {
-    background-color: #89E3D1;
+    background-color: #FFDD98;
    -webkit-animation: mod 1s 1 forwards;
    animation: mod 1s 1 forwards;
 }
@@ -115,8 +115,8 @@ td:first-child:hover.day {
   to { background: #00796D; -webkit-box-shadow: 0 0 12px #333; }
 }
 @-webkit-keyframes mod {
-  from { background-color: #89E3D1; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #BAF4E9; -webkit-box-shadow: 0 0 9px #333; }
+  from { background: #FFDD98; -webkit-box-shadow: 0 0 12px #333; }
+  to { background: #FFBF3E; -webkit-box-shadow: 0 0 12px #333; }
 }
 @-webkit-keyframes noani {
   from { background-color: #FFF;
@@ -164,7 +164,7 @@ td:first-child:hover.day {
 .dayPanel {
     margin: 0 auto;
 	width: 30%;
-    border: #37e4e1 solid 3px;
+    border: #37e4e1 outset 1em;
 	padding: 1em;
 }       
 .timeSlot {
@@ -172,19 +172,31 @@ td:first-child:hover.day {
     position: relative;
     width: 175px;
     height: 25px;
-    border: #37e4e1 solid 1px;
     text-align: center;
+    transition-property: background;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
 }
+.timeSlot:hover.avail {
+    background: #378C00;
+    border: #378C00 outset .25em;
+  }
+  .timeSlot:hover.unavail {
+    background: #FF7070;
+    border: #FF7070 outset .25em;
+  }
 .avail {
-    background-color: #6BD128;
+    background: #86E04C;
+    border: #86E04C outset .25em;
 }
 .unavail {
     background: #FF4D4D;
+    border: #FF4D4D outset .25em;
 }
-.sbutton {
-    position: relative;
-    margin: 10px 200px;
-    background: #37e4e1;
+.timeFont {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 .fadeIn {
         animation: fadeIn 1.5s ease-in;
@@ -209,30 +221,5 @@ td:first-child:hover.day {
 	100% {
 		-webkit-transform: scale(1);
 		opacity: 1;
-	}
-}
-.fadeOut {
-    animation: fadeOut 1.5s ease-in;
-	-webkit-animation: fadeOut 1.5s ease-in;
-	visibility: visible !important;
-}
-@keyframes fadeOut {
-	0% {
-		transform: scale(1);
-		opacity: 1;
-	}
-	100% {
-		transform: scale(0);
-		opacity: 0.0;
-	}
-}
-@-webkit-keyframes fadeOut {
-	0% {
-		-webkit-transform: scale(1);
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scale(0);
-		opacity: 0.0;
 	}
 }
