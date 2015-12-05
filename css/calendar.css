@@ -178,16 +178,16 @@ td:first-child:hover.day {
     transition-timing-function: linear;
 }
 .timeSlot:hover.avail {
-    background: #378C00;
-    border: #378C00 outset .25em;
+    background: #86E04C;
+    border: #86E04C outset .25em;
   }
   .timeSlot:hover.unavail {
     background: #FF7070;
     border: #FF7070 outset .25em;
   }
 .avail {
-    background: #86E04C;
-    border: #86E04C outset .25em;
+    background: #378C00;
+    border: #378C00 outset .25em;
 }
 .unavail {
     background: #FF4D4D;
