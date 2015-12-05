@@ -68,7 +68,7 @@ function getCalendar() {
 			if(currDay == now.getDate() && currDate.getMonth() == now.getMonth() && currDate.getFullYear() == now.getFullYear()) {
 				calendar += '<td class="today" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
 			} else if(currDate < now) {
-				calendar += '<td class="past"><s>' + currDay + '</s></td>';
+				calendar += '<td class="past">' + currDay + '</td>';
 			} else if(j == 0) {
 				calendar += '<td>' + currDay + '</td>';
 			} else if(currDate.getMonth() > now.getMonth() && currDate.getYear() == now.getYear()

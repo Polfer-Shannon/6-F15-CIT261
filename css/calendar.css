@@ -14,40 +14,52 @@ table.center {
 	margin-right: auto;
 }
 th, td {
-	height: 60px;
-	width: 60px;
+	height: 55px;
+	width: 55px;
 	text-align: center;
 	vertical-align: middle;
-        background-color: #ecebf4;
 }
-td.day {
-	height: 30px;
-}
+
 .light {
-	background-color: #A5DD9F;
+	background: linear-gradient(to bottom,  #00796D 0%, #37e4e1 100%);
 	cursor: pointer;
+        border: #37e4e1 outset 3px;
 }
 .moderate {
-	background-color: #89E3D1;
+	background-color: #94a956;
 	cursor: pointer;
+        border: #94a956 solid 3px;
 }
 .heavy {
-	background-color: red;
+	background-color: #FF4D4D;
+        border: #FF4D4D solid 3px;
 }
 .past {
-	background-color: #CCEDC8;
+	background-color: #D9D9D9;
+        opacity: 0.5;
 	cursor: auto;
+        border: #D9D9D9 outset 3px;
 }
 .today {
-	background-color: #5ECBB6;
+	background: linear-gradient(to bottom,  #378C00 0%,#86E04C 100%);
+        border: #86E04C outset 3px;
 	cursor: pointer;
 }
 td:first-child {
-    background-color: #ecebf4;   
+    background-color: #FFF;
+    border: #D9D9D9 outset 3px;
+    opacity: 0.5;
 }
 td:first-child.today {
 	background-color: #37e4e1;
+        border: #37e4e1 outset 3px;
 	cursor: pointer;    
+}
+td.day {
+	height: 30px;
+        background-color: #37e4e1;
+        opacity: 1;
+        border: #37e4e1 outset 3px;
 }
 .calendar {
 	margin: 0 auto;
@@ -64,12 +76,12 @@ td:first-child.today {
 	clear: both;
 }
 .today:hover {
-    background-color: #5ECBB6;
+    background: #378C00;
    -webkit-animation: hov 1s 1 forwards;
    animation: hov 1s 1 forwards;
 }
 .light:hover {
-    background-color: #A5DD9F;
+    background: #37e4e1;
    -webkit-animation: lig 1s 1 forwards;
    animation: lig 1s 1 forwards;
 }
@@ -78,36 +90,49 @@ td:first-child.today {
    -webkit-animation: mod 1s 1 forwards;
    animation: mod 1s 1 forwards;
 }
-td:first-child:hover {
-    background-color: #ecebf4;
-   -webkit-animation: fir 1s 1 forwards;
-   animation: fir 1s 1 forwards;
-}
-td:first-child:hover.day,
+td:first-child:hover,
 td:first-child:hover.past {
-    background-color: #ecebf4;
+    background-color: #FFF;
+    border: #D9D9D9 outset 3px;
+    opacity: 0.5;
    -webkit-animation: noani 1s 1 forwards;
    animation: noani 1s 1 forwards;
 }
+td:first-child:hover.day {
+    height: 30px;
+    background-color: #37e4e1;
+    opacity: 1;
+    border: #37e4e1 outset 3px;
+    -webkit-animation: noanim 1s 1 forwards;
+   animation: noanim 1s 1 forwards;
+}
 @-webkit-keyframes hov {
-  from { background-color: #5ECBB6; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #C1F4EA; -webkit-box-shadow: 0 0 9px #333; }
+  from { background: #86E04C; -webkit-box-shadow: 0 0 12px #333; }
+  to { background: #378C00; -webkit-box-shadow: 0 0 12px #333; }
 }
 @-webkit-keyframes lig {
-  from { background-color: #A5DD9F; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #CCEDC8; -webkit-box-shadow: 0 0 9px #333; }
+  from { background: #37e4e1; -webkit-box-shadow: 0 0 12px #333; }
+  to { background: #00796D; -webkit-box-shadow: 0 0 12px #333; }
 }
 @-webkit-keyframes mod {
   from { background-color: #89E3D1; -webkit-box-shadow: 0 0 9px #333; }
   to { background-color: #BAF4E9; -webkit-box-shadow: 0 0 9px #333; }
 }
-@-webkit-keyframes fir {
-  from { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
-  to { background-color: #ecebf4; -webkit-box-shadow: 0 0 9px #333; }
-}
 @-webkit-keyframes noani {
-  from { background-color: #ecebf4; }
-  to { background-color: #ecebf4; }
+  from { background-color: #FFF;
+         border: #D9D9D9 outset 3px;
+         opacity: 0.5; } 
+  to { background-color: #FFF;
+       border: #D9D9D9 outset 3px;
+       opacity: 0.5; }
+}
+@-webkit-keyframes noanim {
+  from { background-color: #37e4e1;
+         border: #37e4e1 outset 3px;
+         opacity: 1; } 
+  to { background-color: #37e4e1;
+       border: #37e4e1 outset 3px;
+       opacity: 1; }
 }
 .blank {
 	width: 60px;
@@ -151,10 +176,10 @@ td:first-child:hover.past {
     text-align: center;
 }
 .avail {
-    background-color: #089E22;
+    background-color: #6BD128;
 }
 .unavail {
-    background: #AA4C39;
+    background: #FF4D4D;
 }
 .sbutton {
     position: relative;
