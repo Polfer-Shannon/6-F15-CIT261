@@ -71,15 +71,14 @@ function listTimes(month, day, year) {
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<a href="#" class="timeFont" onclick="form('+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
+			schedule += '<a href="#" class="timeFont" onclick="form('+month+','+day+','+year+','+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
 			appointmentHours[i].mil +'" class="timeSlot fadeIn '
-			+ a + '" onclick="form()">' + appointmentHours[i].time + '</div></a>';
+			+ a + '" >' + appointmentHours[i].time + '</div></a>';
 		}
 		schedule += '</div>';
 		schedule += '<br>';
 	
 	document.getElementById('daily').innerHTML = schedule;
-
 	document.getElementById('calendar').innerHTML = '';
 }
 
@@ -94,8 +93,7 @@ function nextDay() {
 }
 
 // form for schedule
-function form(hourClicked) {
-
+function form(month, day, year, hourClicked) {
 	var form = '<form id="schedule_form" action="#" method="POST" enctype="multipart/form-data">';
 	form += '<div class="row">';
 		form += '<label for="name">Your name:</label><br />';
@@ -113,27 +111,27 @@ function form(hourClicked) {
 		form += '<label for="location">Location:</label><br />';
 		form += '<input id="location" class="input" name="location" type="text" value="" size="30" /><br />';
 	form += '</div>';
-	form += '<input id="submit_button" type="button" onclick="makeAppoint('+hourClicked+');" value="Schedule Appointment" />';
+	form += '<input id="submit_button" onclick="makeAppoint('+month+','+day+','+year+','+hourClicked+');event.preventDefault();" type="button" value="Schedule Appointment" />';
 	form += '</form>'
 	
 	document.getElementById('form').innerHTML = form;
+	//document.getElementById('submit_button').onclick = makeAppoint(month, day, year, hourClicked);
 }
 
-function makeAppoint(hour) {
-	console.log('Hour passed in: ' +hour);
+function makeAppoint(month, day, year, hour) {
 	var user = localStorage.getItem('user');
 	if (user == null) {
 		user = 'adam';
 	}
 	var jsonString = {
-                      month: 11,
-					  day: 3,
-                      year: 2015,
+                      month: month,
+					  day: day,
+                      year: year,
                       user: user,
                       location: document.getElementById('location').value,
                       hour: hour
                      };
 	var stringified = JSON.stringify(jsonString);
 	database(stringified, 'db/web_service.php');
-	document.getElementById('form').innerHTML = 'Appointment Sent to DB';
+	document.getElementById('form').innerHTML = 'Appointment Scheduled';// for ' + hour;
 }
