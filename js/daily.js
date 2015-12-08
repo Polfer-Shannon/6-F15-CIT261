@@ -95,6 +95,7 @@ function blah(id) {
 /*
 // STEP 1) Get data
 // STEP 2) Onload, execute the 'blah' function which will disable the mil id's already used
+// SUGGESTION: disabling can be done in database() while the red is being set on hours
 */
 
 function prevDay() {
