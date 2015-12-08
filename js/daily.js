@@ -31,6 +31,7 @@ console.log(JSON.stringify(jsonString));
 
 //load appointments
 //call a php file that queries db, then display change on page
+// SUGGEST renaming to setAppointment
 function database(stringified, url) {
   var http = new XMLHttpRequest(); 
   http.open("POST", url, true);
@@ -71,9 +72,9 @@ function listTimes(month, day, year) {
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<a href="#" class="timeFont" onclick="form('+month+','+day+','+year+','+appointmentHours[i].mil+');event.preventDefault();"><div id="hour-'+
+			schedule += '<div><input id="checkbox-"' + appointmentHours[i].mil + '" type="checkbox"><a href="#" class="timeFont" onclick="form('+month+','+day+','+year+','+appointmentHours[i].mil+');event.preventDefault();"><button id="hour-'+
 			appointmentHours[i].mil +'" class="timeSlot fadeIn '
-			+ a + '" >' + appointmentHours[i].time + '</div></a>';
+			+ a + '" >' + appointmentHours[i].time + '</button></a></div>';
 		}
 		schedule += '</div>';
 		schedule += '<br>';
@@ -81,6 +82,20 @@ function listTimes(month, day, year) {
 	document.getElementById('daily').innerHTML = schedule;
 	document.getElementById('calendar').innerHTML = '';
 }
+
+/*
+function blah(id) {
+	// var appointmentData = ajax.getAppointments();
+	var length = appointmentData.length;
+	for (var i = 0; i < length; i++) {
+		document.getElementById('hour-' + appointmentData[i].mil).css = "disabled";
+	}
+}
+*/
+/*
+// STEP 1) Get data
+// STEP 2) Onload, execute the 'blah' function which will disable the mil id's already used
+*/
 
 function prevDay() {
 	date.setTime( date.getTime() - 86400000 );
