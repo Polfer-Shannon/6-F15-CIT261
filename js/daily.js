@@ -83,6 +83,24 @@ function listTimes(month, day, year) {
 	document.getElementById('calendar').innerHTML = '';
 }
 
+<<<<<<< HEAD
+=======
+/*
+function blah(id) {
+	// var appointmentData = ajax.getAppointments();
+	var length = appointmentData.length;
+	for (var i = 0; i < length; i++) {
+		document.getElementById('hour-' + appointmentData[i].mil).css = "disabled";
+	}
+}
+*/
+/*
+// STEP 1) Get data
+// STEP 2) Onload, execute the 'blah' function which will disable the mil id's already used
+// SUGGESTION: disabling can be done in database() while the red is being set on hours
+*/
+
+>>>>>>> 2c801a8476c03a79d0eea2fc2b135dd522c94d65
 function prevDay() {
 	date.setTime( date.getTime() - 86400000 );
 	getDaily(date.getMonth(), date.getDate(), date.getFullYear());

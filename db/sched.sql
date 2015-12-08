@@ -25,6 +25,7 @@ appointment_date date NOT NULL,
 appointment_time time NOT NULL,
 location varchar(255),
 user_id int NOT NULL,
+message text(255),
 PRIMARY KEY (appointment_id)
 );
 

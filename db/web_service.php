@@ -14,6 +14,7 @@ $shouldInsert = $cleanData["hour"];
 if ($shouldInsert) {
   $appointHour = $cleanData["hour"].":00:00";
   $appointLocation = $cleanData["location"];
+  $message = $cleanData["message"];
 }
 
 require 'load_db.php';
@@ -22,12 +23,14 @@ try {
   $db = loadDB();
 
   if ($shouldInsert) {
-    $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user))';
+    $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user), :message)';
     $insertStmnt = $db->prepare($insertQuery);
     $insertStmnt->bindParam(':date', $date);
     $insertStmnt->bindParam(':hour', $appointHour);
     $insertStmnt->bindParam(':location', $appointLocation);
     $insertStmnt->bindParam(':user', $user);
+    $insertStmnt->bindParam(':message', $message);
+
 
     $insertStmnt->execute();
   }
