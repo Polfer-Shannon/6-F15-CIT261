@@ -14,8 +14,8 @@ table.center {
 	margin-right: auto;
 }
 th, td {
-	height: 55px;
-	width: 55px;
+	height: 3.25em;
+	width: 3.25em;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -56,7 +56,7 @@ td:first-child.today {
 	cursor: pointer;    
 }
 td.day {
-	height: 30px;
+	height: 1.75em;
         background-color: #37e4e1;
         opacity: 1;
         border: #37e4e1 outset 3px;
@@ -135,7 +135,7 @@ td:first-child:hover.day {
        opacity: 1; }
 }
 .blank {
-	width: 60px;
+	width: 3.75em;
 	visibility: hidden;
 }
 .left {
@@ -150,28 +150,28 @@ td:first-child:hover.day {
     background:url(../images/next.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:60px;
-    height:60px;
+    width:3.5em;
+    height:3.5em;
 }
 .previous {
     background:url(../images/previous.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:60px;
-    height:60px;
+    width:3.5em;
+    height:3.5em;
 }
 /* Animations for forms or panels*/
 .dayPanel {
     margin: 0 auto;
-	width: 30%;
+    width: 23em;
     border: #37e4e1 outset 1em;
-	padding: 1em;
+    padding: 1%;
 }       
 .timeSlot {
-    margin: 10px auto;
+    margin: 3% auto;
     position: relative;
-    width: 175px;
-    height: 25px;
+    width: 45%;
+    height: 1.5em;
     text-align: center;
     transition-property: background;
     transition-duration: 0.25s;
