@@ -83,20 +83,6 @@ function listTimes(month, day, year) {
 	document.getElementById('calendar').innerHTML = '';
 }
 
-/*
-function blah(id) {
-	// var appointmentData = ajax.getAppointments();
-	var length = appointmentData.length;
-	for (var i = 0; i < length; i++) {
-		document.getElementById('hour-' + appointmentData[i].mil).css = "disabled";
-	}
-}
-*/
-/*
-// STEP 1) Get data
-// STEP 2) Onload, execute the 'blah' function which will disable the mil id's already used
-*/
-
 function prevDay() {
 	date.setTime( date.getTime() - 86400000 );
 	getDaily(date.getMonth(), date.getDate(), date.getFullYear());
