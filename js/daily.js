@@ -48,6 +48,8 @@ function database(stringified, url) {
 			var hourView = document.getElementById('hour-'+foundHour);
 			hourView.className = "timeSlot fadeIn unavail";
 			hourView.parentNode.onclick = '';
+			var disableCheckbox = document.getElementById('checkbox-'+foundHour);
+			disableCheckbox.style.display = 'none';
     	}
       }
   }
@@ -74,9 +76,8 @@ function listTimes(month, day, year) {
 		for (var i = 0; i < appointmentHours.length; i++) {
 			//avail or unavail class
 			var a = 'avail';
-			schedule += '<div><input id="checkbox-' + appointmentHours[i].mil + '" type="checkbox"><a href="#" class="timeFont" onclick="form('+month+','+day+','+year+','+appointmentHours[i].mil+');event.preventDefault();"><button id="hour-'+
-			appointmentHours[i].mil +'" class="timeSlot fadeIn '
-			+ a + '" >' + appointmentHours[i].time + '</button></a></div>';
+			schedule += '<div id="hour-'+ appointmentHours[i].mil + '" class="timeSlot fadeIn '
+			+ a + '" ><input id="checkbox-' + appointmentHours[i].mil + '" type="checkbox">' + appointmentHours[i].time + '</div>';
 		}
 		schedule += '</div>';
 		schedule += '<br>';
