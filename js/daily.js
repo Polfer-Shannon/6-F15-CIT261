@@ -89,7 +89,7 @@ function listTimes(month, day, year) {
 				hours.push(name);
 			}
 		}
-		var checkBoxButton = '<p>Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button>HERE</button></a> to schedule appointment</p>';
+		var checkBoxButton = '<p class="clickHere">Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button class="clickHereLink">HERE</button></a> to schedule an appointment.</p>';
 		document.getElementById('toggle').innerHTML = checkBoxButton;
 	}
 	document.getElementById('daily').innerHTML = schedule;
