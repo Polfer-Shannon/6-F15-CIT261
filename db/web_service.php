@@ -10,9 +10,13 @@ $date .= $cleanData["day"];
 $user = $cleanData["user"];
 
 //decide whether to insert. alternatively select only
-$shouldInsert = $cleanData["hour"];
+$shouldInsert = $cleanData["hours"];
 if ($shouldInsert) {
-  $appointHour = $cleanData["hour"].":00:00";
+  //$appointHour = $cleanData["hours"].":00:00";
+
+// foreach ($hours as $hour) {
+//     $hour;
+// }
   $appointLocation = $cleanData["location"];
   $message = $cleanData["message"];
 }
@@ -23,16 +27,20 @@ try {
   $db = loadDB();
 
   if ($shouldInsert) {
-    $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user), :message)';
-    $insertStmnt = $db->prepare($insertQuery);
-    $insertStmnt->bindParam(':date', $date);
-    $insertStmnt->bindParam(':hour', $appointHour);
-    $insertStmnt->bindParam(':location', $appointLocation);
-    $insertStmnt->bindParam(':user', $user);
-    $insertStmnt->bindParam(':message', $message);
+    foreach ($shouldInsert as $appointHour) {
+      $appointHour .= ":00:00";
+      
+      $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user), :message)';
+      $insertStmnt = $db->prepare($insertQuery);
+      $insertStmnt->bindParam(':date', $date);
+      $insertStmnt->bindParam(':hour', $appointHour);
+      $insertStmnt->bindParam(':location', $appointLocation);
+      $insertStmnt->bindParam(':user', $user);
+      $insertStmnt->bindParam(':message', $message);
 
-
-    $insertStmnt->execute();
+      $insertStmnt->execute();
+    }
+    
   }
   $query = 'select appointment_time, location from appointment where appointment_date = :date'; 
   $stmnt = $db->prepare($query);

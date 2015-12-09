@@ -2,6 +2,7 @@
 var date;
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var selectedHours = {};
+		var hours = [];
 
 function getDaily(month, day, year) {
 	//var daily;
@@ -17,8 +18,6 @@ function getDaily(month, day, year) {
                       year: year,
                       user: user
                      };
-console.log(jsonString);
-console.log(JSON.stringify(jsonString));
 	var stringified = JSON.stringify(jsonString);
 	
     //call database to insert
@@ -40,8 +39,8 @@ function database(stringified, url) {
     if (http.readyState == 4 && http.status == 200) {
     	//response
     	var data = (http.responseText);
-    	data = JSON.parse(data);
     	console.log(data);
+    	data = JSON.parse(data);
     	for (var i = 0; i < data.times.length; i++) {
 			var foundHour = data.times[i].hour;
 			//change availability flag of hours diplay
@@ -83,7 +82,7 @@ function listTimes(month, day, year) {
 		schedule += '<br>';
 	function toggleHour(hour) {
 		selectedHours[hour] = !selectedHours[hour];
-		var hours = [];
+		hours = [];
 		for (var name in selectedHours) {
 			if (selectedHours[name] === true) {
 				hours.push(name);
@@ -138,21 +137,44 @@ function form(month, day, year, hoursClicked) {
 	
 }
 
-function makeAppoint(month, day, year, hours) {
+function makeAppoint(month, day, year, hoursies) {
 	var user = localStorage.getItem('user');
 	if (user == null) {
 		user = 'adam';
 	}
+	// console.log(hour);
+	// console.log(hours.length);
+	for(var i = 0; i < hours.length; i++ ) {
+		console.log(hours[i]);
+	}
+	// for (var hour in hours) {
+	// 	console.log(hour);	
+	// }
 	var jsonString = {
                       month: month,
 					  day: day,
                       year: year,
                       user: user,
                       location: document.getElementById('location').value,
-					  // create object to store multiple hours.
+					  message: document.getElementById('message').value,
                       hours: hours
                      };
 	var stringified = JSON.stringify(jsonString);
 	database(stringified, 'db/web_service.php');
+
 	document.getElementById('form').innerHTML = 'Appointment Scheduled';// for ' + hour;
+}
+
+function testDb(stringified, url) {
+  var http = new XMLHttpRequest(); 
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  http.onreadystatechange = function() {
+    if (http.readyState == 4 && http.status == 200) {
+    	//response
+    	var data = (http.responseText);
+    	console.log(data);
+      }
+  }
+  http.send(stringified);
 }
