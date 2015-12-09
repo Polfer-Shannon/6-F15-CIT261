@@ -57,8 +57,7 @@ function database(stringified, url) {
 }
 
 // schedule for hours of day
-function listTimes(month, day, year) {
-	
+function listTimes(month, day, year) {	
 	var schedule = '<div class="header fadeIn"><button type="button" onclick="backHome()" title="Return to the calendar to choose another date">'
 		+ '<img src="./images/return.jpg" width="195px" height="60px" alt="button for going back to the calendar"/></button></div>'
 		+ '<div class="header fadeIn"><button class="left" type="button" onclick="prevDay()" title="Previous Day">'
@@ -89,7 +88,7 @@ function listTimes(month, day, year) {
 				hours.push(name);
 			}
 		}
-		var checkBoxButton = '<p>Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button>HERE</button></a> to schedule appointment</p>';
+		var checkBoxButton = '<p class="clickHere">Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button class="clickHereLink">HERE</button></a> to schedule an appointment.</p>';
 		document.getElementById('toggle').innerHTML = checkBoxButton;
 	}
 	document.getElementById('daily').innerHTML = schedule;
