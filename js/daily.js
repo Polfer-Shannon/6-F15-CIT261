@@ -88,7 +88,7 @@ function listTimes(month, day, year) {
 				hours.push(name);
 			}
 		}
-		var checkBoxButton = '<p>Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button>HERE</button></a> to schedule appointment</p>';
+		var checkBoxButton = '<p>Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',' + hours + ');event.preventDefault();"><button>HERE</button></a> to schedule appointment</p>';
 		document.getElementById('toggle').innerHTML = checkBoxButton;
 	}
 	document.getElementById('daily').innerHTML = schedule;
@@ -137,6 +137,7 @@ function form(month, day, year, hoursClicked) {
 	
 }
 
+//TODO: remove unused hoursies and its unused predecessors
 function makeAppoint(month, day, year, hoursies) {
 	var user = localStorage.getItem('user');
 	if (user == null) {
