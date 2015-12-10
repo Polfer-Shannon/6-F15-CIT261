@@ -138,7 +138,8 @@ function form(month, day, year, hoursClicked) {
 }
 
 //TODO: remove unused hoursies and its unused predecessors
-function makeAppoint(month, day, year, hoursies) {
+function makeAppoint(month, day, year, hoursies
+) {
 	var user = localStorage.getItem('user');
 	if (user == null) {
 		user = 'adam';
@@ -148,9 +149,7 @@ function makeAppoint(month, day, year, hoursies) {
 	for(var i = 0; i < hours.length; i++ ) {
 		console.log(hours[i]);
 	}
-	// for (var hour in hours) {
-	// 	console.log(hour);	
-	// }
+	
 	var jsonString = {
                       month: month,
 					  day: day,
@@ -162,8 +161,23 @@ function makeAppoint(month, day, year, hoursies) {
                      };
 	var stringified = JSON.stringify(jsonString);
 	database(stringified, 'db/web_service.php');
-
-	document.getElementById('form').innerHTML = 'Appointment Scheduled';// for ' + hour;
+	
+	var hour = '';
+	for (var i = 0; i < hours.length; i++) {
+		hour += '<br>';
+		if(hours[i] < 12) {
+			hour += hours[i];
+			hour += ':00 am';
+		} else if (hours[i] == 12) {
+			hour += hours[i];
+			hour += ':00 pm';
+		} else {
+			hour += hours[i] - 12;
+			hour += ':00 pm';
+		}
+	}
+	
+	document.getElementById('form').innerHTML = 'Appointment Scheduled on <strong>' + month + ' / ' + day + ' / ' + year + '</strong> for the following hour(s): <strong>' + hour + '</strong>';// for ' + hour;
 }
 
 function testDb(stringified, url) {
