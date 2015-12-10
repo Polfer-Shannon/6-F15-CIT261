@@ -2,7 +2,6 @@
 var date;
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var selectedHours = {};
-		var hours = [];
 
 function getDaily(month, day, year) {
 	//var daily;
@@ -18,6 +17,8 @@ function getDaily(month, day, year) {
                       year: year,
                       user: user
                      };
+console.log(jsonString);
+console.log(JSON.stringify(jsonString));
 	var stringified = JSON.stringify(jsonString);
 	
     //call database to insert
@@ -39,8 +40,8 @@ function database(stringified, url) {
     if (http.readyState == 4 && http.status == 200) {
     	//response
     	var data = (http.responseText);
-    	console.log(data);
     	data = JSON.parse(data);
+    	console.log(data);
     	for (var i = 0; i < data.times.length; i++) {
 			var foundHour = data.times[i].hour;
 			//change availability flag of hours diplay
@@ -82,13 +83,13 @@ function listTimes(month, day, year) {
 		schedule += '<br>';
 	function toggleHour(hour) {
 		selectedHours[hour] = !selectedHours[hour];
-		hours = [];
+		var hours = [];
 		for (var name in selectedHours) {
 			if (selectedHours[name] === true) {
 				hours.push(name);
 			}
 		}
-		var checkBoxButton = '<p>Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',' + hours + ');event.preventDefault();"><button>HERE</button></a> to schedule appointment</p>';
+		var checkBoxButton = '<p class="clickHere">Click <a href="#" class="timeFont" onclick="form('+month+','+day+','+year+',[' + hours + ']);event.preventDefault();"><button class="clickHereLink">HERE</button></a> to schedule an appointment.</p>';
 		document.getElementById('toggle').innerHTML = checkBoxButton;
 	}
 	document.getElementById('daily').innerHTML = schedule;
@@ -137,30 +138,38 @@ function form(month, day, year, hoursClicked) {
 	
 }
 
+<<<<<<< HEAD
 //TODO: remove unused hoursies and its unused predecessors
 function makeAppoint(month, day, year, hoursies
 ) {
+=======
+function makeAppoint(month, day, year, hours) {
+>>>>>>> 64fa56e4fb67325f35aa343d112bc221dc6fc20c
 	var user = localStorage.getItem('user');
 	if (user == null) {
 		user = 'adam';
 	}
+<<<<<<< HEAD
 	// console.log(hour);
 	// console.log(hours.length);
 	for(var i = 0; i < hours.length; i++ ) {
 		console.log(hours[i]);
 	}
 	
+=======
+>>>>>>> 64fa56e4fb67325f35aa343d112bc221dc6fc20c
 	var jsonString = {
                       month: month,
 					  day: day,
                       year: year,
                       user: user,
                       location: document.getElementById('location').value,
-					  message: document.getElementById('message').value,
+					  // create object to store multiple hours.
                       hours: hours
                      };
 	var stringified = JSON.stringify(jsonString);
 	database(stringified, 'db/web_service.php');
+<<<<<<< HEAD
 	
 	var hour = '';
 	for (var i = 0; i < hours.length; i++) {
@@ -178,18 +187,7 @@ function makeAppoint(month, day, year, hoursies
 	}
 	
 	document.getElementById('form').innerHTML = 'Appointment Scheduled on <strong>' + month + ' / ' + day + ' / ' + year + '</strong> for the following hour(s): <strong>' + hour + '</strong>';// for ' + hour;
-}
-
-function testDb(stringified, url) {
-  var http = new XMLHttpRequest(); 
-  http.open("POST", url, true);
-  http.setRequestHeader("Content-type", "application/json; charset=utf-8");
-  http.onreadystatechange = function() {
-    if (http.readyState == 4 && http.status == 200) {
-    	//response
-    	var data = (http.responseText);
-    	console.log(data);
-      }
-  }
-  http.send(stringified);
+=======
+	document.getElementById('form').innerHTML = 'Appointment Scheduled';// for ' + hour;
+>>>>>>> 64fa56e4fb67325f35aa343d112bc221dc6fc20c
 }

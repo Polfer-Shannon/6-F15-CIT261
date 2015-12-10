@@ -223,3 +223,52 @@ td:first-child:hover.day {
 		opacity: 1;
 	}
 }
+#schedule_form {
+    border: #D9D9D9 outset .25em;
+    margin: 3% auto;
+    position: relative;
+    width: 30%;
+    font-weight: bold;
+}
+#submit_button {
+    background: #22908E;
+    border: #22908E outset 3px;
+    margin: 2%;
+    color: #fff;
+    font-weight: bold;
+    transition-property: border color;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
+}
+#submit_button:hover {
+    background: #37e4e1;
+    color: #000;
+    border: #37e4e1 outset .25em;
+    font-weight: bold;
+  }
+.clickHere {
+    border: #D9D9D9 outset .25em;
+    margin: 3% auto;
+    padding: .25em;
+    position: relative;
+    width: 30%;
+    font-weight: bold; 
+
+  }
+  .clickHereLink {
+    background: #22908E;
+    border: #22908E outset 3px;
+    margin: 1%;
+    color: #fff;
+    font-weight: bold;
+    transition-property: border color;
+    transition-duration: 0.25s;
+    transition-timing-function: linear; 
+
+  }
+  .clickHereLink:hover {
+    background: #37e4e1;
+    color: #000;
+    border: #37e4e1 outset .25em;
+    font-weight: bold;
+  }
