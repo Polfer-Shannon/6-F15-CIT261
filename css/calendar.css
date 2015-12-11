@@ -285,7 +285,7 @@ td:first-child:hover.day {
     margin: 3% auto;
     padding: .25em;
     position: relative;
-    width: 30%;
+    width: 25em;
     font-weight: bold; 
 
   }
@@ -351,9 +351,12 @@ h1.right{
 h1.left{
     width: 5em;
 }
- .dayPanel {
+.dayPanel {
     width: 20em;
-}  
+} 
+.clickHere {
+    width: 100%;
+}
 #schedule_form {
     width: 18em;
     height: 18em;
