@@ -15,7 +15,6 @@ function nextMonth() {
 		
 function getCalendar() {
 	getAppointments();
-	console.log(appointments);
 	var now = new Date();
 	var thisMonth;
 	var thisYear;
@@ -69,7 +68,8 @@ function getCalendar() {
 			var currYear = currDate.getFullYear();
 			var appts = {};
 			
-			for(var appt in appointments){
+			console.log(appointments.appointments);
+			for(var appt in appointments.appointments){
 				if(appt.day == currDay && appt.month == currMonth && appt.year == currYear) {
 					appts = appt;
 					break;
@@ -84,7 +84,7 @@ function getCalendar() {
 				calendar += '<td>' + currDay + '</td>';
 			} else if(currDate < now) {
 				calendar += '<td class="past">' + currDay + '</td>';
-			} else if(Object.keys(appts).length === 0 || Object.keys(appts).length > 0 && appts.appts <= 6){
+			} else if(Object.keys(appts).length === 0 || Object.keys(appts).length > 0 && appts.appts <= 5){
 				calendar += '<td class="light" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '")) title="';
 				calendar += Object.keys(appts).length > 0? '"' + appts.appts + ' Appointments"' : '"No Appointments Yet"';
 				calendar += '>' + currDay + '</td>';
@@ -112,7 +112,6 @@ function getAppointments() {
     	//response
     	var data = (http.responseText);
     	appointments = JSON.parse(data);
-    	console.log(data);
       }
   }
   http.send();
