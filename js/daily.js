@@ -129,12 +129,21 @@ function form(month, day, year, hoursClicked) {
 		form += '<label for="location">Location:</label><br />';
 		form += '<input id="location" class="input" name="location" type="text" value="" size="30" /><br />';
 	form += '</div>';
-	form += '<input id="submit_button" onclick="makeAppoint('+month+','+day+','+year+','+hoursClicked+');event.preventDefault();" type="button" value="Schedule Appointment" />';
+	form += '<input id="submit_button" onclick="saveLocalDeets();makeAppoint('+month+','+day+','+year+','+hoursClicked+');event.preventDefault();" type="button" value="Schedule Appointment" />';
 	form += '</form>'
 	
 	document.getElementById('form').innerHTML = form;
+	//Populate form with saved values
+	document.getElementById('email').value = localStorage.getItem('email');
+	document.getElementById('name').value = localStorage.getItem('name');
+
 	document.getElementById('toggle').innerHTML = '';
 	
+}
+
+function saveLocalDeets() {
+	localStorage.setItem('name', document.getElementById('name').value);
+	localStorage.setItem('email', document.getElementById('email').value);
 }
 
 //TODO: remove unused hoursies and its unused predecessors
