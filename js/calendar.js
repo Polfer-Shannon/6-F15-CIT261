@@ -128,7 +128,7 @@ Date.prototype.addDays = function (n) {
 // Temporary submit button on times panel
 function backHome() {
     getCalendar();
-	document.getElementById('daily').style.display = 'none';
-	document.getElementById('form').style.display = 'none';
-	document.getElementById('toggle').style.display = 'none';
+	document.getElementById('daily').innerHTML = '';
+	document.getElementById('form').innerHTML = '';
+	document.getElementById('toggle').innerHTML = '';
 }

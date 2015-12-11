@@ -103,13 +103,13 @@ function listTimes(month, day, year) {
 function prevDay() {
 	date.setTime( date.getTime() - 86400000 );
 	getDaily(date.getMonth(), date.getDate(), date.getFullYear());
-	document.getElementById('toggle').style.display = 'none';
+	document.getElementById('toggle').innerHTML = '';
 }
 
 function nextDay() {
 	date.setTime( date.getTime() + 86400000 );
 	getDaily(date.getMonth(), date.getDate(), date.getFullYear());
-	document.getElementById('toggle').style.display = 'none';
+	document.getElementById('toggle').innerHTML = 'none';
 }
 
 // form for schedule
