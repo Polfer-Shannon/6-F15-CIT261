@@ -275,4 +275,15 @@ td:first-child:hover.day {
     color: #000;
     border: #37e4e1 outset .25em;
     font-weight: bold;
-  }
+  }  
+.glow:hover,
+.glow {
+  -webkit-animation-name: glowing;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes glowing {
+  from { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
+  50% { border: #FF7070 solid 3px; -webkit-box-shadow: 0 0 18px #FF7070; }
+  to { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
+}
