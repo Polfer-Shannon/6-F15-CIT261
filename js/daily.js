@@ -170,6 +170,7 @@ function makeAppoint(month, day, year, hoursies) {
                       hours: hours
                      };
 	var stringified = JSON.stringify(jsonString);
+	console.log(stringified);
 	database(stringified, 'db/web_service.php');
 
 	var hour = '';
@@ -188,7 +189,7 @@ function makeAppoint(month, day, year, hoursies) {
 		console.log(hour);
 	}
 	
-	document.getElementById('form').innerHTML = 'Appointment Scheduled on <strong>' + month + ' / ' + day + ' / ' + year + '</strong> for the following hour(s): <strong>' + hour + '</strong>';// for ' + hour;
+	document.getElementById('form').innerHTML = 'Appointment Scheduled on <strong>' + (month+1) + ' / ' + day + ' / ' + year + '</strong> for the following hour(s): <strong>' + hour + '</strong>';// for ' + hour;
 }
 
 function testDb(stringified, url) {
