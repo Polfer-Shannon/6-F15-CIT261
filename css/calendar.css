@@ -301,11 +301,18 @@ td:first-child:hover.day {
                        /* Styling for 400px and smaller*/
 @media only screen and (max-width: 400px){
   
-h1.left{
-    width: 7em;
+.header{
+    width: 100%;
+}
+image.return{
+    width: 4em;
+    height: 3em;
 }
 h1.right{
-    width: 4em;
+   width:6em;
+}
+h1.left{
+    width: 5em;
 }
  .dayPanel {
     width: 20em;

@@ -59,7 +59,7 @@ function database(stringified, url) {
 function listTimes(month, day, year) {
 	
 	var schedule = '<div class="header fadeIn"><button type="button" onclick="backHome()" title="Return to the calendar to choose another date">'
-		+ '<img src="./images/return.jpg" width="195px" height="60px" alt="button for going back to the calendar"/></button></div>'
+		+ '<img class="return" src="./images/return.jpg" width="195px" height="60px" alt="button for going back to the calendar"/></button></div>'
 		+ '<div class="header fadeIn"><button class="left" type="button" onclick="prevDay()" title="Previous Day">'
 		+ '<img src="./images/previous.png" width="60px" height="60px" alt="previous Day button"/></button> &nbsp;&nbsp;'
 		+ '<h1>' + months[month] + ' ' + day + ', ' + year + '</h1> &nbsp;&nbsp;'
