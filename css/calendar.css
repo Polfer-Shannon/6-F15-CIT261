@@ -229,9 +229,10 @@ td:first-child:hover.day {
 }
 #schedule_form {
     border: #D9D9D9 outset .25em;
-    margin: 3% auto;
+    margin: 2em auto;
     position: relative;
-    width: 30%;
+    width: 22em;
+    height: 20em;
     font-weight: bold;
 }
 #submit_button {
@@ -286,4 +287,41 @@ td:first-child:hover.day {
   from { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
   50% { border: #FF7070 solid 3px; -webkit-box-shadow: 0 0 18px #FF7070; }
   to { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
+}
+#message.input{
+    width:18em;
+    height:8em;
+}
+#location.input,
+#name.input,
+#email.input{
+    width:18em;
+    height:1.25em;
+}
+                       /* Styling for 400px and smaller*/
+@media only screen and (max-width: 400px){
+  
+h1.left{
+    width: 7em;
+}
+h1.right{
+    width: 4em;
+}
+ .dayPanel {
+    width: 20em;
+}  
+#schedule_form {
+    width: 18em;
+    height: 18em;
+} 
+#message.input{
+    width:16em;
+    height:6em;
+}
+#location.input,
+#name.input,
+#email.input{
+    width:16em;
+    height:0.75em;
+}
 }
