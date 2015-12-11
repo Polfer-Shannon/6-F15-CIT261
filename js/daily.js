@@ -76,7 +76,7 @@ function listTimes(month, day, year) {
 			//avail or unavail class
 			var a = 'avail';
 			schedule += '<div id="hour-'+ appointmentHours[i].mil + '" class="timeSlot fadeIn '
-			+ a + '" ><input id="checkbox-' + appointmentHours[i].mil + '" type="checkbox">' + appointmentHours[i].time + '</div>';
+			+ a + '" ><div class="cb"><input id="checkbox-' + appointmentHours[i].mil + '" type="checkbox"></div>' + appointmentHours[i].time + '</div>';
 		}
 		schedule += '</div>';
 		schedule += '<br>';

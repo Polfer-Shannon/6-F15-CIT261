@@ -177,6 +177,10 @@ td:first-child:hover.day {
     transition-duration: 0.25s;
     transition-timing-function: linear;
 }
+.cb{
+    position: relative;
+    float: left;
+}
 .timeSlot:hover.avail {
     background: #86E04C;
     border: #86E04C outset .25em;
