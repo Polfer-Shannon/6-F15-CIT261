@@ -134,6 +134,35 @@ td:first-child:hover.day {
        border: #37e4e1 outset 3px;
        opacity: 1; }
 }
+
+@keyframes hov {
+  from { background: #86E04C; box-shadow: 0 0 12px #333; }
+  to { background: #378C00; box-shadow: 0 0 12px #333; }
+}
+@keyframes lig {
+  from { background: #37e4e1; box-shadow: 0 0 12px #333; }
+  to { background: #00796D; box-shadow: 0 0 12px #333; }
+}
+@keyframes mod {
+  from { background: #FFDD98; box-shadow: 0 0 12px #333; }
+  to { background: #FFBF3E; box-shadow: 0 0 12px #333; }
+}
+@keyframes noani {
+  from { background-color: #FFF;
+         border: #D9D9D9 outset 3px;
+         opacity: 0.5; } 
+  to { background-color: #FFF;
+       border: #D9D9D9 outset 3px;
+       opacity: 0.5; }
+}
+@keyframes noanim {
+  from { background-color: #37e4e1;
+         border: #37e4e1 outset 3px;
+         opacity: 1; } 
+  to { background-color: #37e4e1;
+       border: #37e4e1 outset 3px;
+       opacity: 1; }
+}
 .blank {
 	width: 3.75em;
 	visibility: hidden;
@@ -282,11 +311,19 @@ td:first-child:hover.day {
   -webkit-animation-name: glowing;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
+  animation-name: glowing;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 @-webkit-keyframes glowing {
   from { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
   50% { border: #FF7070 solid 3px; -webkit-box-shadow: 0 0 18px #FF7070; }
   to { border: #FF4D4D solid 3px; -webkit-box-shadow: 0 0 9px #333; }
+}
+@keyframes glowing {
+  from { border: #FF4D4D solid 3px; box-shadow: 0 0 9px #333; }
+  50% { border: #FF7070 solid 3px; box-shadow: 0 0 18px #FF7070; }
+  to { border: #FF4D4D solid 3px; box-shadow: 0 0 9px #333; }
 }
 #message.input{
     width:18em;
