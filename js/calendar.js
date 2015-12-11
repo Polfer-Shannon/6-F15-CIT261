@@ -1,4 +1,5 @@
 var CALENDAR = {};
+var appointments = {};
 
 var calendarIncrement = 0;
 		
@@ -13,6 +14,7 @@ function nextMonth() {
 }
 		
 function getCalendar() {
+	getAppointments();
 	var now = new Date();
 	var thisMonth;
 	var thisYear;
@@ -64,25 +66,55 @@ function getCalendar() {
 			var currDay = currDate.getDate();
 			var currMonth = currDate.getMonth();
 			var currYear = currDate.getFullYear();
+			var appts = {};
+			
+			for(var appt in appointments){
+				if(appt.day == currDay && appt.month == currMonth && appt.year == currYear) {
+					appts = appt;
+					break;
+				}
+			}
 			
 			if(currDay == now.getDate() && currDate.getMonth() == now.getMonth() && currDate.getFullYear() == now.getFullYear()) {
-				calendar += '<td class="today" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
-			} else if(currDate < now) {
-				calendar += '<td class="past">' + currDay + '</td>';
+				calendar += '<td class="today" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '")) title="';
+				calendar += appts !== {}? '"' + appts.appts + ' Appointments"' : '"No Appointments Yet"';
+				calendar += '>' + currDay + '</td>';
 			} else if(j == 0) {
 				calendar += '<td>' + currDay + '</td>';
-			} else if(currDate.getMonth() > now.getMonth() && currDate.getYear() == now.getYear()
-				|| currDate.getMonth() < now.getMonth() && currDate.getYear() < now.getYear()) {
-				calendar += '<td class="moderate" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
-			} else {
-				calendar += '<td class="light" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
+			} else if(currDate < now) {
+				calendar += '<td class="past">' + currDay + '</td>';
+			} else if(Object.keys(appts).length === 0 || Object.keys(appts).length > 0 && appts.appts <= 6){
+				calendar += '<td class="light" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '")) title="';
+				calendar += Object.keys(appts).length > 0? '"' + appts.appts + ' Appointments"' : '"No Appointments Yet"';
+				calendar += '>' + currDay + '</td>';
+			} else if(Object.keys(appts).length > 0 && appts.appts < 11){
+				calendar += '<td class="moderate" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '")) title="'
+				+ appts.appts + ' Appointments">' + currDay + '</td>';
+			} else if(appts !== {}) {
+				calendar += '<td class="heavy" title="No Appointments Available' +
+				'" onclick=(getDaily("' + currMonth +'","' + currDay + '","' + currYear + '"))>' + currDay + '</td>';
 			}
-
 		}
 		calendar += '</tr>';
 	}
 	document.getElementById('calendar').innerHTML = calendar;
 	
+}
+
+function getAppointments() {
+  var http = new XMLHttpRequest();
+  var url = 'db/calendar.php'
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  http.onreadystatechange = function() {
+    if (http.readyState == 4 && http.status == 200) {
+    	//response
+    	var data = (http.responseText);
+    	appointments = JSON.parse(data);
+    	console.log(data);
+      }
+  }
+  http.send();
 }
                 
 Date.prototype.addDays = function (n) {
@@ -95,6 +127,6 @@ Date.prototype.addDays = function (n) {
 // Temporary submit button on times panel
 function backHome() {
     getCalendar();
-	document.getElementById('daily').innerHTML = '';
-	document.getElementById('form').innerHTML = '';
+	document.getElementById('daily').style.display = 'none';
+	document.getElementById('form').style.display = 'none';
 }
