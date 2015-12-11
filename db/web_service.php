@@ -8,6 +8,7 @@ if ($cleanData["day"] < 10) {
 }
 $date .= $cleanData["day"];
 $user = $cleanData["user"];
+$email = $cleanData["email"];
 
 //decide whether to insert. alternatively select only
 $shouldInsert = $cleanData["hours"];
@@ -24,6 +25,23 @@ try {
   $db = loadDB();
 
   if ($shouldInsert) {
+    //does user name exist?
+    //fetch whether exists
+    //if not, insert
+     $userCheckQuery = 'select name from user where name = :name and email = :email';
+      $userCheckStmnt = $db->prepare($userCheckQuery);
+      $userCheckStmnt->bindParam(':name', $user);
+      $userCheckStmnt->bindParam(':email', $email);
+      $userCheckStmnt->execute();
+      $row = $userCheckStmnt->fetch();
+      if (!$row) {
+        $insertUserQuery = 'insert into user values(null, :name, :email, null)';
+        $insertUserStmnt = $db->prepare($insertUserQuery);
+        $insertUserStmnt->bindParam(':name', $user);
+        $insertUserStmnt->bindParam(':email', $email);
+        $insertUserStmnt->execute();
+      }
+
     foreach ($hours as $hour) {  
       $hour .= ":00:00";
       $insertQuery = 'insert into appointment values(null, :date, :hour, :location ,(SELECT user_id from user where name = :user), :message)';
@@ -37,7 +55,7 @@ try {
       $insertStmnt->execute();
     }
   }
-  $query = 'select appointment_time, location from appointment where appointment_date = :date'; 
+  $query = 'select appointment_time, location, name, email from appointment a join user u on a.user_id = u.user_id where appointment_date = :date'; 
   $stmnt = $db->prepare($query);
   $stmnt->bindParam(':date', $date);
   $stmnt->execute();
@@ -46,9 +64,11 @@ try {
   while($row = $stmnt->fetch())
   {
     $location = $row['location'];
+    $user = $row['name'];
+    $email = $row['email'];
     $hour = ltrim($row['appointment_time'], "0");//remove times beginning with 0
     $hour = current(explode(':', $hour));
-    $appoints .= '{"hour":"'.$hour.'","location":"'.$location.'"},';
+    $appoints .= '{"hour":"'.$hour.'","location":"'.$location.'","user":"'.$user.'","email":"'.$email.'"},';
   }
   //remove trailing comma
   $appoints = rtrim($appoints, ",");

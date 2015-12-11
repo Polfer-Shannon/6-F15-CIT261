@@ -150,7 +150,8 @@ function saveLocalDeets() {
 
 //TODO: remove unused hoursies and its unused predecessors
 function makeAppoint(month, day, year, hoursies) {
-	var user = localStorage.getItem('user');
+	var user = localStorage.getItem('name');
+	var email = localStorage.getItem('email');
 	if (user == null) {
 		user = 'adam';
 	}
@@ -167,6 +168,7 @@ function makeAppoint(month, day, year, hoursies) {
 					  day: day,
                       year: year,
                       user: user,
+                      email: email,
                       location: document.getElementById('location').value,
 					  message: document.getElementById('message').value,
                       hours: hours
