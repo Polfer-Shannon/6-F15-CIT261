@@ -129,4 +129,5 @@ function backHome() {
     getCalendar();
 	document.getElementById('daily').style.display = 'none';
 	document.getElementById('form').style.display = 'none';
+	document.getElementById('toggle').style.display = 'none';
 }
