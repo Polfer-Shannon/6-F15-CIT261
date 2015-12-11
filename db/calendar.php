@@ -15,7 +15,7 @@ try {
 	$appt_date = $row['appointment_date'];
 	$app_yr = substr($appt_date, 0, 4);
 	$app_mo = substr($appt_date, 5, 2);
-	$app_day = substr($appt_date, 7, 2);
+	$app_day = substr($appt_date, 8, 2);
     $appoints .= '{"appts":"' . $appts . '","year":"' . $app_yr. '","month":"' . $app_mo. '","day":"' . $app_day. '"},';
   }
   //remove trailing comma
