@@ -49,6 +49,14 @@ function database(stringified, url) {
 			hourView.parentNode.onclick = '';
 			var disableCheckbox = document.getElementById('checkbox-'+foundHour);
 			disableCheckbox.style.display = 'none';
+
+			//glow if set by user TODO: check email to?
+			if (data.times[i].user == localStorage.getItem('name')) {
+				console.log(data.times[i].user + ' ' +  localStorage.getItem('name'));
+				document.getElementById('hour-'+foundHour).className += " glow";
+			} else {
+				hourView.className = "timeSlot fadeIn unavail";
+			}
     	}
       }
   }
