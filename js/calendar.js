@@ -15,6 +15,7 @@ function nextMonth() {
 		
 function getCalendar() {
 	getAppointments();
+	console.log(appointments);
 	var now = new Date();
 	var thisMonth;
 	var thisYear;

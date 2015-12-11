@@ -4,7 +4,7 @@ require 'load_db.php';
 try {
   $db = loadDB();
 
-  $query = 'select COUNT(*) AS appts, appointment_date from appointment ORDER BY appointment_date'; 
+  $query = 'select COUNT(*) AS appts, appointment_date from appointment ORDER BY appointment_date GROUP BY appointment_date'; 
   $stmnt = $db->prepare($query);
   $stmnt->execute();
 
